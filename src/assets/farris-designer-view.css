@@ -1,0 +1,218 @@
+body {
+  user-select: none;
+}
+
+.drag-container.formio-builder-form,
+.drag-container.formio-builder-form:hover {
+  padding: 0 0 1rem 0;
+  border: none;
+}
+
+.component-btn-group {
+  flex-direction: row-reverse;
+  position: absolute;
+  z-index: 800;
+  background: #fff;
+  display: none;
+  top: -26px;
+  right: 0;
+}
+
+.component-btn-group>div {
+  position: fixed;
+}
+
+.farris-component.farris-nested {
+  padding: 10px;
+  border: dotted 2px #e8e8e8;
+}
+
+.farris-component.dgComponentSelected>.component-btn-group {
+  display: flex;
+}
+
+
+.component-btn-group .component-settings-button {
+  display: flex;
+  cursor: pointer;
+  float: right;
+  margin-left: 4px;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1.2em;
+  border-radius: 2px 2px 0px 0px;
+  width: 24px !important;
+  height: 24px !important;
+  color: #fff !important;
+  background: #388FFF !important;
+
+}
+
+.component-btn-group .component-settings-button .f-icon {
+  font-size: 18px;
+  margin: 0 auto;
+  line-height: 20px;
+}
+
+.component-btn-group .component-settings-button .f-icon.f-icon-yxs_move {
+  cursor: move;
+}
+
+
+.farris-component-ContentContainer .drag-container {
+  display: inherit;
+  flex-direction: inherit;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-wrap: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  width: 100%;
+  overflow: inherit;
+  height: inherit;
+}
+
+
+/* gu-mirror被添加到镜像中 */
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+
+.gu-mirror.undroppable .component-settings-button .f-icon-yxs_move {
+  cursor: no-drop;
+}
+
+.gu-hide {
+  display: none !important;
+}
+
+/** 拖拽时镜像元素的父级元素 */
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* 当拖动源元素的镜像时，gu-transit被添加到源元素中。只是增加了透明度。 */
+.gu-transit {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+
+/* 拖拽经过某区域时，为区域增加底色 */
+.drag-over:not(.no-drop) {
+  background-color: #f3f8ff !important;
+}
+
+/** 拖拽区域内的元素不显示按钮区域 */
+.gu-unselectable .farris-component.dgComponentSelected>.component-btn-group {
+  display: none;
+}
+
+/** 拖拽区域内的镜像元素显示按钮区域 */
+.gu-unselectable .gu-mirror.farris-component.dgComponentSelected>.component-btn-group {
+  display: flex;
+}
+
+/** 拖拽过程中的源元素不显示按钮区域 */
+.gu-transit.farris-component.dgComponentSelected>.component-btn-group {
+  display: none;
+}
+
+/* 镜像元素为fixed定位 */
+.gu-mirror.farris-component.dgComponentSelected {
+  position: fixed !important;
+}
+
+/* 镜像元素的按钮区域定位 */
+.gu-mirror.farris-component.dgComponentSelected>.component-btn-group>div {
+  position: relative;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/** 镜像元素的按钮区域设置宽度。是为了适配控件本身宽度比较小，但是操作按钮比较多时，按钮被换行的问题 */
+.gu-mirror.farris-component.dgComponentSelected>.component-btn-group {
+  width: max-content;
+}
+
+.dgComponentSelected {
+  border-top: 2px solid #388FFF !important;
+  border-left: 2px solid #388FFF !important;
+  border-right: 2px solid #388FFF !important;
+  border-bottom: 2px solid #388FFF !important
+}
+
+/** 卡片区块 **/
+.formEditor .f-struct-like-card {
+  display: block;
+}
+
+/** 解决farristab 开启内容填充后切换标签页导致内部列表不显示的问题**/
+.formEditor .farris-tabs.f-tabs-content-fill .f-struct-is-subgrid .f-grid-is-sub {
+  width: 100%;
+}
+
+
+/** 解决在模态框中弹出右键菜单 菜单不显示的问题**/
+.ide-framework .cdk-overlay-container {
+  z-index: 1100;
+}
+.formEditor .editorDiv .f-struct-wrapper {
+  margin-bottom: 15px;
+}
+
+.f-struct-wrapper+.f-struct-wrapper {
+  position: relative;
+  display: inherit;
+  margin-bottom: 15px;
+}
+
+.f-page-is-mainsubcard .f-page-main .f-struct-wrapper {
+  background: #FFF;
+}
+
+/** 解决带导航的列表和带导航的卡片模板中，不显示右侧区域的问题 */
+.formEditor .f-page-navigate .f-page {
+  position: absolute !important;
+}
+
+/** 解决带导航的列表和带导航的卡片模板中，右侧区域滚动条位置问题 */
+.formEditor .f-page-navigate .f-page.f-page-card .f-page-main>.drag-container {
+  display: block;
+  overflow: unset;
+}
+
+/* 解决OA模板（带页头的导航类模板） 中，右侧滚动条位置问题 */
+.formEditor .f-page.f-page-navigate.f-page-is-listnav-with-header .f-page-main .f-page-content-main {
+  display: block;
+}
+
+/* 解决在设计器中popover内容区域无法选中的问题 */
+.ide-framework farris-popover .popover-content.popover-body {
+  user-select: text;
+}
+
+/** 解决在弹窗中使用smoothDnd时不显示镜像元素的问题 */
+.smooth-dnd-ghost {
+  z-index: 1100 !important
+}
+
+/** 解决零代码设计器中OA类卡片表单滚动条位置问题 */
+.formEditor .farris-oa-page.f-page-card .f-page-main {
+  display: block !important;
+  overflow: auto !important;
+}
+
+/** 解决带筛选方案的列表表单中，选中表格组件后没有上边线的问题 */
+.formEditor .f-page-has-scheme .f-page-main.farris-component{
+	margin-top:0;
+}

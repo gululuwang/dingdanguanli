@@ -1,0 +1,28 @@
+<farris-section class="f-section-grid f-section-in-managelist" id="data-grid-section" [index]="index" [expandStatus]="true" [mainTitle]="SectiondatagridsectionMainTitle" [subTitle]="SectiondatagridsectionSubTitle" [fill]="true" [showHeader]="false" [enableMaximize]="true" [enableAccordion]="'default'" *ngIf="true">
+<!DOCTYPE html><div class="f-utils-fill"><farris-datagrid class="f-component-grid" id="dataGrid" farris-use-binding-data farris-grid-end-edit [enableHighlightCell]="false" [fitColumns]="true" [fields]="this.viewModel.dataGridColumns" [showLineNumber]="false" [striped]="true" [virtualized]="false" [pagination]="true" [pageSize]="20" [virtualizedAsyncLoad]="false" [multiSelect]="true" [editMode]="'cell'" (pageChanged)="this.viewModel.ChangePage1($event);" [fit]="true" [showCheckbox]="true" [farris-datagrid-editable]="viewModel.stateMachine && viewModel.stateMachine['editable']" [disableGroupOnEditing]="true" [lockPagination]="viewModel.stateMachine&&viewModel.stateMachine['editable']" [footerHeight]="29" (scrollYLoad)="this.viewModel.ChangePage1($event);" [rowStyler]="dataGridRowStyle" [showAllCheckbox]="false" [lineNumberTitle]="dataGridlineNumberTitle" [mergeCell]="false" [showBorder]="false" [checkOnSelect]="false" [selectOnCheck]="false" [nowrap]="true" [footerDataFrom]="'client'" *ngIf="true" farris-remote-summary-command="" [autoFitColumns]="false" [showGroupColumn]="true" [useControlPanel]="true" [autoHeight]="false" [AutoColumnWidthUseDblclick]="true" [showPageList]="false" (pageSizeChanged)="this.viewModel.ChangePage1($event);" [pageList]="[10,20,30,50,100]" [lineNumberWidth]="36" [headerWrap]="false" [rowHeight]="30" [enableEditCellStyle]="false" [enableDragColumn]="false" [showRowGroupPanel]="false" [groupSummaryPosition]="'groupFooterRow'" [keepSelect]="true" [clearSelectionsWhenDataIsEmpty]="true" [selectOnEditing]="false" [footerPosition]="'bottom'" [showGotoInput]="false" [scrollBarShowMode]="'auto'" [enableContextMenu]="false" [enableSimpleMode]="true" [selectionMode]="'custom'" #dataGridDataGrid=""></farris-datagrid></div>
+</farris-section><ng-template #dataGridbillTypeTemplate let-ctx>
+<span *ngIf="ctx.rowData['billType'] === 'CL'" class="badge badge-info">差旅费</span>
+<span *ngIf="ctx.rowData['billType'] === 'JT'" class="badge badge-success">交通费</span>
+<span *ngIf="ctx.rowData['billType'] === 'SJ'" class="badge badge-warning">手机费</span>
+</ng-template><ng-template #dataGridcodeTemplate let-ctx>
+<span class="f-pretend-link f-cursor-pointer" (click)="this.viewModel.datagridcomponentviewmodelEdit1(ctx);">{{farrisGridUtils.getValue(ctx.field, ctx.rowData)}}</span>
+</ng-template><ng-template #dataGridauditStatusTemplate let-ctx>
+<span *ngIf="ctx.rowData.auditStatus === 'None'">
+   <span class="badge-round-danger mr-2"></span>{{'GridField/auditStatus_5aeb26bc_5jnn/enumData/None'|lang:lang:'未稽核'}}
+</span>
+<span *ngIf="ctx.rowData.auditStatus === 'Passed'">
+   <span class="badge-round-info mr-2"></span>{{'GridField/auditStatus_5aeb26bc_5jnn/enumData/Passed'|lang:lang:'通过'}}
+</span>
+<span *ngIf="ctx.rowData.auditStatus === 'Reject'">
+   <span class="badge-round-success mr-2"></span>{{'GridField/auditStatus_5aeb26bc_5jnn/enumData/Reject'|lang:lang:'未通过'}}
+</span>
+</ng-template><ng-template #dataGridmanageTemplate let-ctx>
+
+        <div class="f-btn-group ">
+        <div class="btn-group-sm btn-group f-btn-group-links">
+       <button class="btn-link btn ng-star-inserted" (click)="this.viewModel.datagridcomponentviewmodelEdit1($event,ctx);">{{'DataGrid/dataGrid/OperateEditButton'|lang:lang:'编辑'}}</button>
+       <button  class="btn-link btn ng-star-inserted" (click)="this.viewModel.datagridcomponentviewmodelRemove1($event,ctx);">{{'DataGrid/dataGrid/OperateDeleteButton'|lang:lang:'删除'}}</button>
+       </div>
+       </div>
+       
+</ng-template>
